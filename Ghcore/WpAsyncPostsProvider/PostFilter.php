@@ -13,7 +13,9 @@ class PostFilter implements PostFilterInterface
     {
         $this->container = $container;
 
-        add_action('pre_get_posts', [$this, 'onPreGetPosts']);
+        if ($this->getInitialPostCount() != 0) {
+            add_action('pre_get_posts', [$this, 'onPreGetPosts']);
+        }
     }
 
     /**
@@ -24,6 +26,7 @@ class PostFilter implements PostFilterInterface
     public function onPreGetPosts(WP_Query $query): void
     {
         if (!is_admin() && $query->is_main_query()) {
+            /* @TODO: customizable filter */
             if ($query->is_home()) {
                 $query->set(
                     'posts_per_page',
