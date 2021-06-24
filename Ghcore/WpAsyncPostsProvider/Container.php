@@ -13,7 +13,7 @@ class Container implements ContainerInterface
     protected ValidatorInterface    $validator;
     protected PostRendererInterface $renderer;
 
-    public function __construct(array $options = null)
+    public function __construct(array $options = [])
     {
         $this->settings = new ContainerSettings($options);
 
