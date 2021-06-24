@@ -9,7 +9,8 @@ class AsyncPosts implements AsyncPostsInterface
 {
     use withREST;
 
-    protected ContainerInterface $container;
+    /** @var AsyncPostsProvider|ContainerInterface */
+    protected $container;
 
     public function __construct(
         ContainerInterface $container

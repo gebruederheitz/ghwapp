@@ -23,5 +23,5 @@ interface ContainerInterface
 
     public function getRenderer(): PostRendererInterface;
 
-    public function setRenderer(PostRendererInterface $renderer): Container;
+    public function setRenderer(PostRendererInterface $renderer): ContainerInterface;
 }

@@ -8,7 +8,7 @@ use WP_Post;
 class PostRenderer implements PostRendererInterface
 {
 
-    protected ContainerInterface $container;
+    protected $container;
 
     public function __construct(ContainerInterface $container)
     {
