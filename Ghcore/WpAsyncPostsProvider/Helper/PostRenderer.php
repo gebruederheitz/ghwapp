@@ -27,7 +27,8 @@ class PostRenderer implements PostRendererInterface
      */
     public function render(
         array $posts,
-        string $templateName = 'tile'
+        string $templateName = 'tile',
+        array $templateArgs = []
     ): string
     {
         global $post;
@@ -37,7 +38,8 @@ class PostRenderer implements PostRendererInterface
             $post = $currentPost;
             get_template_part(
                 $this->container->getSettings()->getRendererTemplatePath(),
-                $templateName
+                $templateName,
+                $templateArgs
             );
         }
         $rendered = ob_get_contents();
