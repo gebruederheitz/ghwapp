@@ -45,7 +45,7 @@ new Container();
 Make sure you have Composer autoload or an alternative class loader present.
 
 You may pass any options provided by `ContainerSettings` as class properties in
-a string-keyed array to the container to modify defaults:
+a string-keyed array to the container to modify defaults ([see below](#available-options)):
 
 ```php
 new Container([
@@ -59,31 +59,21 @@ set up the REST route for use with your frontend scripts / framework.
 
 ## Available options
 
-The following options can be set by passing the container an array or defining
-them in the YAML config file (with their respective default values):
-```yaml
-# The number of posts rendered server-side (on page 0).
- - initialPostCount: 8
-# The number of posts per page _after_ page 0.
- - perPage: 6
-# The classes used for the various functionalities. This is where you can provide
-# your own classes implementing the respective interfaces to extend or
-# modify functionality.
- - postFilterClass: PostFilter::class
- - asyncPostsClass: AsyncPosts::class
- - validatorClass: Validator::class
- - rendererClass: PostRenderer::class
-# The template path passed to `get_template_part` by the renderer.
- - rendererTemplatePath: 'template-parts/content/content-excerpt' 
-# The default template name passed as the second parameter to `get_template_part`
-# by the renderer. This can be overwritten by the `partial` request parameter.
- - defaultPartial: 'small'
-# The route used for retrieving paginated posts asynchronously. This will be
-# prefixed with `/ghwapp/v1/` and the basic WP REST path.
- - route: '/posts/load-more'
-```
+The following options can be set by passing the container an array with the
+following keys:
 
-## YAML configuration
+| option key            | default value                | description |
+| --------------------- | ---------------------------- | ----------- |
+| initialPostCount      | (int) 8                      | The number of posts rendered server-side (on page 0). |
+| perPage               | (int) 6                      | The number of posts per page _after_ page 0.          |
+| postFilterClass       | (string) PostFilter::class   | The classes used for the various functionalities. This is where... |
+| asyncPostsClass       | (string) AsyncPosts::class   | ...you can provide your own classes implementing the... |
+| validatorClass        | (string) Validator::class    | ...respective interfaces to extend... |
+| rendererClass         | (string) PostRenderer::class | ...or modify functionality.           |
+| rendererTemplatePath  | (string) 'template-parts/content/content-excerpt' | The template path passed to `get_template_part` by the renderer. |
+| defaultPartial        | (string) 'small'             | The default template name passed as the second parameter to `get_template_part` by the renderer. This can be overwritten by the `partial` request parameter. |
+| route                 | (string) '/posts/load-more'  | The route used for retrieving paginated posts asynchronously. This will be prefixed with `/ghwapp/v1` and the basic WP REST path (usually `/wp/json`). |
+
 
 ## Basic usage
 
