@@ -9,22 +9,8 @@ loading of posts from a frontend script or framework using WP's own REST API.
 # Installation
 
 via composer:
-```json
-# composer.json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com/ghcore/ghwapp.git"
-        }
-    ],
-    "require": {
-        "ghcore/wp-async-posts-provider": "dev-main"
-    }
-}
-```
 ```shell
-> composer install
+> composer require gebruederheitz/wp-async-posts-provider
 ```
 
 

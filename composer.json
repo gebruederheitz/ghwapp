@@ -2,7 +2,7 @@
     "name": "gebruederheitz/wp-async-posts-provider",
     "description": "Helps you get your posts asynchronously to the frontend in your plugin or theme",
     "type": "library",
-    "license": "UNLICENSED",
+    "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
             "\\Ghcore\\WpAsyncPostsProvider\\": "Ghcore/WpAsyncPostsProvider/"
