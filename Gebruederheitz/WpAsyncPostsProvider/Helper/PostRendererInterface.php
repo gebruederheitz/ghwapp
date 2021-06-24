@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider\Helper;
+namespace Gebruederheitz\WpAsyncPostsProvider\Helper;
 
 interface PostRendererInterface
 {

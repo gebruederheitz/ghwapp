@@ -23,7 +23,7 @@ Initialize the container (usually in your `functions.php`):
 ```php
 <?php
 
-use Ghcore\WpAsyncPostsProvider\AsyncPostsProvider;
+use Gebruederheitz\WpAsyncPostsProvider\AsyncPostsProvider;
 
 AsyncPostsProvider::getInstance()->init();
 ```
@@ -78,7 +78,7 @@ To determine whether or not there are any posts left to be loaded asynchronously
 you can use the PostFilter's `shouldShowLoadMoreButton()` method:
 
 ```php
-use Ghcore\WpAsyncPostsProvider\AsyncPostsProvider;
+use Gebruederheitz\WpAsyncPostsProvider\AsyncPostsProvider;
 ?>
 <div>
     <?php if (AsyncPostsProvider::getInstance()->getPostFilter()->shouldShowLoadMoreButton()): ?>
@@ -93,6 +93,8 @@ use Ghcore\WpAsyncPostsProvider\AsyncPostsProvider;
 
 
 ## Extending or modifying components
+
+### Injecting services
 
 > todo
 

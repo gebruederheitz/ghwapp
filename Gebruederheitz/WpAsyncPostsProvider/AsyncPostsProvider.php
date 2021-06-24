@@ -1,12 +1,12 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider;
+namespace Gebruederheitz\WpAsyncPostsProvider;
 
 use DI\Container;
-use Ghcore\WpAsyncPostsProvider\Helper\PostRendererInterface;
-use Ghcore\WpAsyncPostsProvider\Traits\Singleton;
-use Ghcore\WpAsyncPostsProvider\Helper\ValidatorInterface;
-use Ghcore\WpAsyncPostsProvider\Traits\SingletonInterface;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRendererInterface;
+use Gebruederheitz\WpAsyncPostsProvider\Traits\Singleton;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\ValidatorInterface;
+use Gebruederheitz\WpAsyncPostsProvider\Traits\SingletonInterface;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
 
 class AsyncPostsProvider extends Container

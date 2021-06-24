@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider;
+namespace Gebruederheitz\WpAsyncPostsProvider;
 
-use Ghcore\WpAsyncPostsProvider\Traits\withREST;
+use Gebruederheitz\WpAsyncPostsProvider\Traits\withREST;
 use WP_REST_Request;
 
 class AsyncPosts implements AsyncPostsInterface

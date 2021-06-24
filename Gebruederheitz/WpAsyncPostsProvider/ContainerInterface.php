@@ -1,9 +1,9 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider;
+namespace Gebruederheitz\WpAsyncPostsProvider;
 
-use Ghcore\WpAsyncPostsProvider\Helper\PostRendererInterface;
-use Ghcore\WpAsyncPostsProvider\Helper\ValidatorInterface;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRendererInterface;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\ValidatorInterface;
 
 interface ContainerInterface
 {
