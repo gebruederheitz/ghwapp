@@ -3,6 +3,8 @@
 namespace Gebruederheitz\WpAsyncPostsProvider;
 
 use DI\Container;
+use DI\Definition\Source\MutableDefinitionSource;
+use DI\Proxy\ProxyFactory;
 use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRendererInterface;
 use Gebruederheitz\WpAsyncPostsProvider\Traits\Singleton;
 use Gebruederheitz\WpAsyncPostsProvider\Helper\ValidatorInterface;
@@ -20,6 +22,18 @@ class AsyncPostsProvider extends Container
     protected $asyncPosts;
     protected $validator;
     protected $renderer;
+
+    protected function __construct(
+        MutableDefinitionSource $definitionSource = null,
+        ProxyFactory $proxyFactory = null,
+        PsrContainerInterface $wrapperContainer = null
+    ) {
+        parent::__construct(
+            $definitionSource,
+            $proxyFactory,
+            $wrapperContainer
+        );
+    }
 
     public function init(array $options = []): ContainerInterface
     {
