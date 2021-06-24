@@ -1,5 +1,5 @@
 {
-    "name": "ghcore/wp-async-posts-provider",
+    "name": "gebruederheitz/wp-async-posts-provider",
     "description": "Helps you get your posts asynchronously to the frontend in your plugin or theme",
     "type": "library",
     "license": "UNLICENSED",
@@ -17,10 +17,5 @@
     "require": {
 	    "php": "^7.4",
         "php-di/php-di": "^6.3"
-    },
-    "extra": {
-        "branch-alias": {
-             "dev-master": "1.1.x-dev"
-        }
     }
 }
