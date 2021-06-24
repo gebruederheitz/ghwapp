@@ -119,7 +119,7 @@ class PostFilter implements PostFilterInterface
         return $posts;
     }
 
-    private function getInitialPostCount(): int
+    protected function getInitialPostCount(): int
     {
         return $this->container->getSettings()->getInitialPostCount();
     }
