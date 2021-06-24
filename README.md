@@ -25,7 +25,7 @@ Initialize the container (usually in your `functions.php`):
 
 use Ghcore\WpAsyncPostsProvider\AsyncPostsProvider;
 
-new AsyncPostsProvider();
+AsyncPostsProvider::getInstance()->init();
 ```
 
 Make sure you have Composer autoload or an alternative class loader present.
@@ -34,7 +34,7 @@ You may pass any options provided by `ContainerSettings` as class properties in
 a string-keyed array to the container to modify defaults ([see below](#available-options)):
 
 ```php
-new Container([
+AsyncPostsProvider::getInstance()->init([
     'rendererTemplatePath' => 'template-parts/fancy/excerpt',
     'defaultPartial' => 'fancy-tile',
 ]);
@@ -78,11 +78,10 @@ To determine whether or not there are any posts left to be loaded asynchronously
 you can use the PostFilter's `shouldShowLoadMoreButton()` method:
 
 ```php
-/** @var \Ghcore\WpAsyncPostsProvider\ContainerInterface $container */
-global $container
+use Ghcore\WpAsyncPostsProvider\AsyncPostsProvider;
 ?>
 <div>
-    <?php if ($container->getPostFilter()->shouldShowLoadMoreButton()): ?>
+    <?php if (AsyncPostsProvider::getInstance()->getPostFilter()->shouldShowLoadMoreButton()): ?>
         <button id="load-more">Load more posts</button>
     <?php endif; ?>
 </div>
