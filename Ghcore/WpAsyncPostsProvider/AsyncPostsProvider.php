@@ -2,11 +2,18 @@
 
 namespace Ghcore\WpAsyncPostsProvider;
 
+use DI\Container;
 use Ghcore\WpAsyncPostsProvider\Helper\PostRendererInterface;
+use Ghcore\WpAsyncPostsProvider\Traits\Singleton;
 use Ghcore\WpAsyncPostsProvider\Helper\ValidatorInterface;
+use Ghcore\WpAsyncPostsProvider\Traits\SingletonInterface;
+use Psr\Container\ContainerInterface as PsrContainerInterface;
 
-class AsyncPostsProvider implements ContainerInterface
+class AsyncPostsProvider extends Container
+    implements ContainerInterface, PsrContainerInterface, SingletonInterface
+
 {
+    use Singleton;
 
     protected $settings;
     protected $postFilter;
@@ -14,7 +21,7 @@ class AsyncPostsProvider implements ContainerInterface
     protected $validator;
     protected $renderer;
 
-    public function __construct(array $options = [])
+    public function init(array $options = []): ContainerInterface
     {
         $this->settings = new ContainerSettings($options);
 
@@ -29,6 +36,8 @@ class AsyncPostsProvider implements ContainerInterface
 
         $rendererClass = $this->settings->getRendererClass();
         $this->renderer = new $rendererClass($this);
+
+        return $this;
     }
 
     public function getSettings(): ContainerSettings

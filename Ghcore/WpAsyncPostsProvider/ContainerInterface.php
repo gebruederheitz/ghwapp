@@ -7,6 +7,8 @@ use Ghcore\WpAsyncPostsProvider\Helper\ValidatorInterface;
 
 interface ContainerInterface
 {
+    public function init(array $options = []): ContainerInterface;
+
     public function getSettings(): ContainerSettings;
 
     public function getPostFilter(): PostFilterInterface;
