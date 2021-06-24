@@ -1,8 +1,8 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider\Helper;
+namespace Gebruederheitz\WpAsyncPostsProvider\Helper;
 
-use Ghcore\WpAsyncPostsProvider\ContainerInterface;
+use Gebruederheitz\WpAsyncPostsProvider\ContainerInterface;
 use WP_Post;
 
 class PostRenderer implements PostRendererInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider\Traits;
+namespace Gebruederheitz\WpAsyncPostsProvider\Traits;
 
 interface SingletonInterface
 {

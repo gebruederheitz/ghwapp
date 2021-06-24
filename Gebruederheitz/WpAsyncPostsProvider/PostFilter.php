@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider;
+namespace Gebruederheitz\WpAsyncPostsProvider;
 
 use WP_Post;
 use WP_Query;

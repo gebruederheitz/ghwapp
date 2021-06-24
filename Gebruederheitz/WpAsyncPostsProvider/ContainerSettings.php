@@ -1,9 +1,9 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider;
+namespace Gebruederheitz\WpAsyncPostsProvider;
 
-use Ghcore\WpAsyncPostsProvider\Helper\PostRenderer;
-use Ghcore\WpAsyncPostsProvider\Helper\Validator;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRenderer;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\Validator;
 
 class ContainerSettings
 {

@@ -5,7 +5,7 @@
     "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
-            "\\Ghcore\\WpAsyncPostsProvider\\": "Ghcore/WpAsyncPostsProvider/"
+            "Gebruederheitz\\WpAsyncPostsProvider\\": "Gebruederheitz/WpAsyncPostsProvider/"
         }
     },
     "authors": [

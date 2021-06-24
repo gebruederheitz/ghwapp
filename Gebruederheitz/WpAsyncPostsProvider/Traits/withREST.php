@@ -1,6 +1,6 @@
 <?php
 
-namespace Ghcore\WpAsyncPostsProvider\Traits;
+namespace Gebruederheitz\WpAsyncPostsProvider\Traits;
 
 const REST_API_VERSION = '1';
 
