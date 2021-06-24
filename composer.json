@@ -5,7 +5,7 @@
     "license": "UNLICENSED",
     "autoload": {
         "psr-4": {
-            "Ghcore\\WpAsyncPostsProvider\\": "Ghcore/WpAsyncPostsProvider/"
+            "\\Ghcore\\WpAsyncPostsProvider\\": "Ghcore/WpAsyncPostsProvider/"
         }
     },
     "authors": [
