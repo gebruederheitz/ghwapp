@@ -37,9 +37,9 @@ Initialize the container (usually in your `functions.php`):
 ```php
 <?php
 
-use Ghcore\WpAsyncPostsProvider\Container;
+use Ghcore\WpAsyncPostsProvider\AsyncPostsProvider;
 
-new Container();
+new AsyncPostsProvider();
 ```
 
 Make sure you have Composer autoload or an alternative class loader present.

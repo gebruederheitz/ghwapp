@@ -5,7 +5,7 @@ namespace Ghcore\WpAsyncPostsProvider;
 use Ghcore\WpAsyncPostsProvider\Helper\PostRendererInterface;
 use Ghcore\WpAsyncPostsProvider\Helper\ValidatorInterface;
 
-class Container implements ContainerInterface
+class AsyncPostsProvider implements ContainerInterface
 {
     protected ContainerSettings     $settings;
     protected PostFilterInterface   $postFilter;
@@ -40,7 +40,7 @@ class Container implements ContainerInterface
         return $this->postFilter;
     }
 
-    public function setPostFilter(PostFilterInterface $postFilter): Container
+    public function setPostFilter(PostFilterInterface $postFilter): AsyncPostsProvider
     {
         $this->postFilter = $postFilter;
 
@@ -52,7 +52,7 @@ class Container implements ContainerInterface
         return $this->asyncPosts;
     }
 
-    public function setAsyncPosts(AsyncPostsInterface $asyncPosts): Container
+    public function setAsyncPosts(AsyncPostsInterface $asyncPosts): AsyncPostsProvider
     {
         $this->asyncPosts = $asyncPosts;
 
@@ -64,7 +64,7 @@ class Container implements ContainerInterface
         return $this->validator;
     }
 
-    public function setValidator(ValidatorInterface $validator): Container
+    public function setValidator(ValidatorInterface $validator): AsyncPostsProvider
     {
         $this->validator = $validator;
 
@@ -76,7 +76,7 @@ class Container implements ContainerInterface
         return $this->renderer;
     }
 
-    public function setRenderer(PostRendererInterface $renderer): Container
+    public function setRenderer(PostRendererInterface $renderer): AsyncPostsProvider
     {
         $this->renderer = $renderer;
 
