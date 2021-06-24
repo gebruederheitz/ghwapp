@@ -11,10 +11,9 @@ class AsyncPosts implements AsyncPostsInterface
 
     protected ContainerInterface $container;
 
-    public function __construct(
-        ContainerInterface $container
-    ) {
-        $this->container = $container ?? new AsyncPostsProvider();
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
 
         $this->initInstanceRestApi();
     }
