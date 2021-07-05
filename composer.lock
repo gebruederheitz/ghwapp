@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "467686558b591bfa7d3a505076f9d052",
+    "content-hash": "1fa70f4f91ef5d7ed18048abfc5e6663",
     "packages": [
+        {
+            "name": "gebruederheitz/simple-singleton",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gebruederheitz/simple-singleton.git",
+                "reference": "302a7b4fa60f1303e240f43508f08d8abe5118df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gebruederheitz/simple-singleton/zipball/302a7b4fa60f1303e240f43508f08d8abe5118df",
+                "reference": "302a7b4fa60f1303e240f43508f08d8abe5118df",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gebruederheitz\\SimpleSingleton\\": "Gebruederheitz/SimpleSingleton/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Maros",
+                    "email": "andreas.maros@gebruederheitz.de"
+                }
+            ],
+            "description": "A simple implementation of a singleton as an extensible abstract class or as a trait.",
+            "support": {
+                "issues": "https://github.com/gebruederheitz/simple-singleton/issues",
+                "source": "https://github.com/gebruederheitz/simple-singleton/tree/v1.0.0"
+            },
+            "time": "2021-07-05T17:07:49+00:00"
+        },
         {
             "name": "opis/closure",
             "version": "3.6.2",

@@ -6,16 +6,16 @@ use DI\Container;
 use DI\Definition\Source\MutableDefinitionSource;
 use DI\Proxy\ProxyFactory;
 use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRendererInterface;
-use Gebruederheitz\WpAsyncPostsProvider\Traits\Singleton;
+use Gebruederheitz\SimpleSingleton\SingletonAble;
 use Gebruederheitz\WpAsyncPostsProvider\Helper\ValidatorInterface;
-use Gebruederheitz\WpAsyncPostsProvider\Traits\SingletonInterface;
+use Gebruederheitz\SimpleSingleton\SingletonInterface;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
 
 class AsyncPostsProvider extends Container
     implements ContainerInterface, PsrContainerInterface, SingletonInterface
 
 {
-    use Singleton;
+    use SingletonAble;
 
     protected $settings;
     protected $postFilter;
