@@ -7,7 +7,7 @@ use WP_Query;
 
 class PostFilter implements PostFilterInterface
 {
-    protected ContainerInterface $container;
+    protected $container;
 
     public function __construct(ContainerInterface $container)
     {

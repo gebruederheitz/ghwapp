@@ -7,15 +7,15 @@ use Gebruederheitz\WpAsyncPostsProvider\Helper\Validator;
 
 class ContainerSettings
 {
-    protected int    $initialPostCount     = 8;
-    protected int    $perPage              = 6;
-    protected string $postFilterClass      = PostFilter::class;
-    protected string $asyncPostsClass      = AsyncPosts::class;
-    protected string $validatorClass       = Validator::class;
-    protected string $rendererClass        = PostRenderer::class;
-    protected string $rendererTemplatePath = 'template-parts/content/content-excerpt';
-    protected string $defaultPartial       = 'small';
-    protected string $route                = '/posts/load-more';
+    protected $initialPostCount     = 8;
+    protected $perPage              = 6;
+    protected $postFilterClass      = PostFilter::class;
+    protected $asyncPostsClass      = AsyncPosts::class;
+    protected $validatorClass       = Validator::class;
+    protected $rendererClass        = PostRenderer::class;
+    protected $rendererTemplatePath = 'template-parts/content/content-excerpt';
+    protected $defaultPartial       = 'small';
+    protected $route                = '/posts/load-more';
 
     public function __construct(array $options)
     {
