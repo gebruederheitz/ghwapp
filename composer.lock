@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fa70f4f91ef5d7ed18048abfc5e6663",
+    "content-hash": "5d1a5380e812959be49419b241c965ad",
     "packages": [
         {
             "name": "gebruederheitz/simple-singleton",
@@ -45,6 +45,46 @@
                 "source": "https://github.com/gebruederheitz/simple-singleton/tree/v1.0.0"
             },
             "time": "2021-07-05T17:07:49+00:00"
+        },
+        {
+            "name": "gebruederheitz/wp-simple-rest",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gebruederheitz/wp-simple-rest.git",
+                "reference": "4f44e5f310299cb1c10cbcb254558c4ea7a444fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gebruederheitz/wp-simple-rest/zipball/4f44e5f310299cb1c10cbcb254558c4ea7a444fa",
+                "reference": "4f44e5f310299cb1c10cbcb254558c4ea7a444fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gebruederheitz\\": "Gebruederheitz/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Maros",
+                    "email": "andreas.maros@gebruederheitz.de"
+                }
+            ],
+            "description": "A trait to help you set up REST endpoints in Wordpress.",
+            "support": {
+                "issues": "https://github.com/gebruederheitz/wp-simple-rest/issues",
+                "source": "https://github.com/gebruederheitz/wp-simple-rest/tree/v1.0.0"
+            },
+            "time": "2021-07-08T14:09:58+00:00"
         },
         {
             "name": "opis/closure",
