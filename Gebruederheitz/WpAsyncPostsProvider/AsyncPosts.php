@@ -2,7 +2,7 @@
 
 namespace Gebruederheitz\WpAsyncPostsProvider;
 
-use Gebruederheitz\Traits\withREST;
+use Gebruederheitz\Traits\Rest\withREST;
 use WP_REST_Request;
 
 class AsyncPosts implements AsyncPostsInterface
