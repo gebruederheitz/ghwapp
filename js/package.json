@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/gebruederheitz/ghwapp#readme",
   "dependencies": {
-    "@gebruederheitz/wp-async-posts-loader": "^0.1.0"
+    "@gebruederheitz/wp-async-posts-loader": "^0.2.0"
   }
 }
