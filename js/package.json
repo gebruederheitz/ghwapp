@@ -1,0 +1,22 @@
+{
+  "name": "@gebruederheitz/wp-async-posts-provider",
+  "version": "0.1.1",
+  "description": "JS dependencies for the PHP module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gebruederheitz/ghwapp.git"
+  },
+  "author": "Andreas Maros <andreas.maros@gebruederheitz.de>",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/gebruederheitz/ghwapp/issues"
+  },
+  "homepage": "https://github.com/gebruederheitz/ghwapp#readme",
+  "dependencies": {
+    "@gebruederheitz/wp-async-posts-loader": "^0.1.0"
+  }
+}

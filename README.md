@@ -58,7 +58,7 @@ following keys:
 | rendererClass         | (string) PostRenderer::class | ...or modify functionality.           |
 | rendererTemplatePath  | (string) 'template-parts/content/content-excerpt' | The template path passed to `get_template_part` by the renderer. |
 | defaultPartial        | (string) 'small'             | The default template name passed as the second parameter to `get_template_part` by the renderer. This can be overwritten by the `partial` request parameter. |
-| route                 | (string) '/posts/load-more'  | The route used for retrieving paginated posts asynchronously. This will be prefixed with `/ghwapp/v1` and the basic WP REST path (usually `/wp/json`). |
+| route                 | (string) '/posts/load-more'  | The route used for retrieving paginated posts asynchronously. This will be prefixed with `/ghwp/v1` and the basic WP REST path (usually `/wp/json`). |
 
 
 ## Basic usage
@@ -89,7 +89,23 @@ use Gebruederheitz\WpAsyncPostsProvider\AsyncPostsProvider;
 
 ## Usage on the front end
 
-> todo
+From v0.2.0 onwards, this package bundles the front-end module from
+[@gebruederheitz/wp-async-posts-loader](https://www.npmjs.com/package/@gebruederheitz/wp-async-posts-loader)
+(mainly in order to avoid cross-dependency issues).
+
+In order to include the JS module in your asset bundle, you'll simply have to
+require the JS from your composer vendor directory:
+
+```js
+import { LoadMore } from '../path/to/composer/vendor/gebruederheitz/wp-async-posts-provider/js';
+
+// INSTEAD OF 
+// import { LoadMore } from '@gebruederheitz/wp-async-posts-loader`;
+```
+
+The rest of the usage documentation on
+[@gebruederheitz/wp-async-posts-loader](https://www.npmjs.com/package/@gebruederheitz/wp-async-posts-loader)
+still applies.
 
 
 ## Extending or modifying components
