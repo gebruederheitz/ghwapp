@@ -3,22 +3,45 @@
 namespace Gebruederheitz\WpAsyncPostsProvider;
 
 use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRenderer;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\PostRendererInterface;
 use Gebruederheitz\WpAsyncPostsProvider\Helper\Validator;
+use Gebruederheitz\WpAsyncPostsProvider\Helper\ValidatorInterface;
 
 class ContainerSettings
 {
-    protected $initialPostCount     = 8;
-    protected $perPage              = 6;
-    protected $postFilterClass      = PostFilter::class;
-    protected $asyncPostsClass      = AsyncPosts::class;
-    protected $validatorClass       = Validator::class;
-    protected $rendererClass        = PostRenderer::class;
-    protected $rendererTemplatePath = 'template-parts/content/content-excerpt';
-    protected $defaultPartial       = 'small';
-    protected $route                = '/posts/load-more';
+    /** @var int */
+    protected $initialPostCount = 8;
 
+    /** @var int */
+    protected $perPage = 6;
+
+    /** @var class-string<PostFilterInterface> */
+    protected $postFilterClass = PostFilter::class;
+
+    /** @var class-string<AsyncPostsInterface>  */
+    protected $asyncPostsClass = AsyncPosts::class;
+
+    /** @var class-string<ValidatorInterface>  */
+    protected $validatorClass = Validator::class;
+
+    /** @var class-string<PostRendererInterface>  */
+    protected $rendererClass = PostRenderer::class;
+
+    /** @var string */
+    protected $rendererTemplatePath = 'template-parts/content/content-excerpt';
+
+    /** @var string */
+    protected $defaultPartial = 'small';
+
+    /** @var string */
+    protected $route = '/posts/load-more';
+
+    /**
+     * @param array<string, mixed> $options
+     */
     public function __construct(array $options)
     {
+        /** @phpstan-ignore-next-line */
         foreach ($this as $property => $value) {
             if (isset($options[$property])) {
                 $this->{$property} = $options[$property];
@@ -26,39 +49,24 @@ class ContainerSettings
         }
     }
 
-    /**
-     * @return int
-     */
     public function getInitialPostCount(): int
     {
         return $this->initialPostCount;
     }
 
-    /**
-     * @param int $initialPostCount
-     *
-     * @return ContainerSettings
-     */
-    public function setInitialPostCount(int $initialPostCount
+    public function setInitialPostCount(
+        int $initialPostCount
     ): ContainerSettings {
         $this->initialPostCount = $initialPostCount;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getPerPage(): int
     {
         return $this->perPage;
     }
 
-    /**
-     * @param int $perPage
-     *
-     * @return ContainerSettings
-     */
     public function setPerPage(int $perPage): ContainerSettings
     {
         $this->perPage = $perPage;
@@ -67,7 +75,7 @@ class ContainerSettings
     }
 
     /**
-     * @return string
+     * @return class-string<PostFilterInterface>
      */
     public function getPostFilterClass(): string
     {
@@ -75,11 +83,10 @@ class ContainerSettings
     }
 
     /**
-     * @param string $postFilterClass
-     *
-     * @return ContainerSettings
+     * @param class-string<PostFilterInterface> $postFilterClass
      */
-    public function setPostFilterClass(string $postFilterClass
+    public function setPostFilterClass(
+        string $postFilterClass
     ): ContainerSettings {
         $this->postFilterClass = $postFilterClass;
 
@@ -87,7 +94,7 @@ class ContainerSettings
     }
 
     /**
-     * @return string
+     * @return class-string<AsyncPostsInterface>
      */
     public function getAsyncPostsClass(): string
     {
@@ -95,11 +102,10 @@ class ContainerSettings
     }
 
     /**
-     * @param string $asyncPostsClass
-     *
-     * @return ContainerSettings
+     * @param class-string<AsyncPostsInterface> $asyncPostsClass
      */
-    public function setAsyncPostsClass(string $asyncPostsClass
+    public function setAsyncPostsClass(
+        string $asyncPostsClass
     ): ContainerSettings {
         $this->asyncPostsClass = $asyncPostsClass;
 
@@ -107,7 +113,7 @@ class ContainerSettings
     }
 
     /**
-     * @return string
+     * @return class-string<ValidatorInterface>
      */
     public function getValidatorClass(): string
     {
@@ -115,9 +121,7 @@ class ContainerSettings
     }
 
     /**
-     * @param string $validatorClass
-     *
-     * @return ContainerSettings
+     * @param class-string<ValidatorInterface> $validatorClass
      */
     public function setValidatorClass(string $validatorClass): ContainerSettings
     {
@@ -127,7 +131,7 @@ class ContainerSettings
     }
 
     /**
-     * @return string
+     * @return class-string<PostRendererInterface>
      */
     public function getRendererClass(): string
     {
@@ -135,9 +139,7 @@ class ContainerSettings
     }
 
     /**
-     * @param string $rendererClass
-     *
-     * @return ContainerSettings
+     * @param class-string<PostRendererInterface> $rendererClass
      */
     public function setRendererClass(string $rendererClass): ContainerSettings
     {
@@ -146,19 +148,11 @@ class ContainerSettings
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRendererTemplatePath(): string
     {
         return $this->rendererTemplatePath;
     }
 
-    /**
-     * @param string $rendererTemplatePath
-     *
-     * @return ContainerSettings
-     */
     public function setRendererTemplatePath(
         string $rendererTemplatePath
     ): ContainerSettings {
@@ -167,19 +161,11 @@ class ContainerSettings
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDefaultPartial(): string
     {
         return $this->defaultPartial;
     }
 
-    /**
-     * @param string $defaultPartial
-     *
-     * @return ContainerSettings
-     */
     public function setDefaultPartial(string $defaultPartial): ContainerSettings
     {
         $this->defaultPartial = $defaultPartial;
@@ -187,19 +173,11 @@ class ContainerSettings
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getRoute(): string
     {
         return $this->route;
     }
 
-    /**
-     * @param string $route
-     *
-     * @return ContainerSettings
-     */
     public function setRoute(string $route): ContainerSettings
     {
         $this->route = $route;

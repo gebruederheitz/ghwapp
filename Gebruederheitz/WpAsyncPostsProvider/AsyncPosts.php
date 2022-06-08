@@ -2,7 +2,8 @@
 
 namespace Gebruederheitz\WpAsyncPostsProvider;
 
-use Gebruederheitz\Traits\Rest\withREST;
+use Gebruederheitz\Wordpress\Rest\Traits\withREST;
+use WP_Post;
 use WP_REST_Request;
 
 class AsyncPosts implements AsyncPostsInterface
@@ -39,43 +40,51 @@ class AsyncPosts implements AsyncPostsInterface
      *
      * @param  WP_REST_Request  $request
      *
-     * @return array  An associative array with
-     *                 "posts" => (array)
-     *                and
-     *                 "more" => (bool).
+     * @return array{posts: array<WP_Post>|string, more: bool}
      */
     public function restGetPaginatedPosts(WP_REST_Request $request): array
     {
         $request->sanitize_params();
 
-        $pageNumber   = $request->get_param('page');
-        $returnType   = $request->get_param('return');
-        $templateUsed = $request->get_param('partial');
+        $pageNumber = intval($request->get_param('page'));
+        $returnType = $request->get_param('return');
+        $templateUsed = $request->get_param('partial') ?: '';
+
+        if (!is_string($templateUsed)) {
+            $templateUsed = $this->container
+                ->getRenderer()
+                ->getDefaultTemplate();
+        }
 
         $initialPostCount = $this->getInitialPostCount();
         $perPage = $this->getPostsPerPage();
         $more = null;
 
-        $posts = $this->container->getPostFilter()->getPaginatedPostsData(
-            $pageNumber,
-            [],
-            $perPage,
-            $more,
-            $initialPostCount
-        );
+        $posts = $this->container
+            ->getPostFilter()
+            ->getPaginatedPostsData(
+                $pageNumber,
+                [],
+                $perPage,
+                $more,
+                $initialPostCount,
+            );
 
         return [
-            "posts" => $returnType === 'json'
-                ? $posts
-                : $this->container->getRenderer()->render($posts, $templateUsed),
-            "more"  => $more,
+            'posts' =>
+                $returnType === 'json'
+                    ? $posts
+                    : $this->container
+                        ->getRenderer()
+                        ->render($posts, $templateUsed),
+            'more' => $more,
         ];
     }
 
     /**
      * Dummy callback for withRest static REST API route registration
      *
-     * @return array
+     * @return array<array<string, mixed>>
      */
     protected static function getRestRoutes(): array
     {
@@ -85,15 +94,15 @@ class AsyncPosts implements AsyncPostsInterface
     /**
      * withRest callback defining the available instance REST API routes.
      *
-     * @return array[]
+     * @return array<array<string, mixed>>
      */
-    protected function getInstanceRestRoutes (): array
+    protected function getInstanceRestRoutes(): array
     {
         return [
             [
-                "name" => "Get Paginated Post (Load More)",
-                "route" => $this->container->getSettings()->getRoute(),
-                "config" => [
+                'name' => 'Get Paginated Post (Load More)',
+                'route' => $this->container->getSettings()->getRoute(),
+                'config' => [
                     'methods' => 'GET',
                     'callback' => [$this, 'restGetPaginatedPosts'],
                     'permission_callback' => function () {
@@ -107,15 +116,22 @@ class AsyncPosts implements AsyncPostsInterface
                             'type' => 'number',
                         ],
                         'return' => [
-                            'description' => 'Whether to return JSON data or rendered HTML posts',
+                            'description' =>
+                                'Whether to return JSON data or rendered HTML posts',
                             'default' => 'html',
                             'type' => 'string',
                             'sanitize_callback' => 'sanitize_text_field',
-                            'validate_callback' => [$this->container->getValidator(), 'validatePaginationReturnType'],
+                            'validate_callback' => [
+                                $this->container->getValidator(),
+                                'validatePaginationReturnType',
+                            ],
                         ],
                         'partial' => [
-                            'description' => 'The template part that should be used by the renderer',
-                            'default' => $this->container->getSettings()->getDefaultPartial(),
+                            'description' =>
+                                'The template part that should be used by the renderer',
+                            'default' => $this->container
+                                ->getSettings()
+                                ->getDefaultPartial(),
                             'type' => 'string',
                             'sanitize_callback' => 'sanitize_text_field',
                         ],
@@ -124,5 +140,4 @@ class AsyncPosts implements AsyncPostsInterface
             ],
         ];
     }
-
 }

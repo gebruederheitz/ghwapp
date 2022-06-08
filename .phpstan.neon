@@ -1,0 +1,6 @@
+parameters:
+  level: 9
+  paths:
+    - Gebruederheitz/
+includes:
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon

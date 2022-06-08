@@ -7,6 +7,7 @@ use WP_Query;
 
 class PostFilter implements PostFilterInterface
 {
+    /** @var ContainerInterface */
     protected $container;
 
     public function __construct(ContainerInterface $container)
@@ -28,10 +29,7 @@ class PostFilter implements PostFilterInterface
         if (!is_admin() && $query->is_main_query()) {
             /* @TODO: customizable filter */
             if ($query->is_home()) {
-                $query->set(
-                    'posts_per_page',
-                    $this->getInitialPostCount()
-                );
+                $query->set('posts_per_page', $this->getInitialPostCount());
             }
         }
     }
@@ -43,12 +41,10 @@ class PostFilter implements PostFilterInterface
     {
         $initialCount = $this->getInitialPostCount();
         $count = count(
-            get_posts(
-                [
-                    'posts_per_page' => ($initialCount + 1),
-                    'fields' => 'ids',
-                ]
-            )
+            get_posts([
+                'posts_per_page' => $initialCount + 1,
+                'fields' => 'ids',
+            ]),
         );
 
         return $count > $initialCount;
@@ -66,7 +62,7 @@ class PostFilter implements PostFilterInterface
      * @param int   $pageNumber   The page number queried. 0 will return the
      *                            same as a page template without loading more
      *                            items.
-     * @param array $queryParams  The category to filter for.
+     * @param array<string, mixed> $queryParams  The category to filter for.
      * @param int   $postsPerPage The number of posts to return – this should
      *                            not change between subsequent requests on the
      *                            same page.
@@ -91,7 +87,7 @@ class PostFilter implements PostFilterInterface
 
         if ($pageNumber > 0) {
             $initialOffset = $initialOffset ?: $initialCount;
-            $offset = $initialOffset + (($pageNumber - 1) * $postsPerPage);
+            $offset = $initialOffset + ($pageNumber - 1) * $postsPerPage;
         } else {
             // for page index 0, only show the first posts (offset 0) until $initialTilesDisplayed
             $postsToReturn = $initialOffset ?: $initialCount;
@@ -106,7 +102,10 @@ class PostFilter implements PostFilterInterface
             'offset' => $offset,
         ];
 
-        $queryParamsUsed = array_merge_recursive($defaultQueryParams, $queryParams);
+        $queryParamsUsed = array_merge_recursive(
+            $defaultQueryParams,
+            $queryParams,
+        );
 
         $posts = get_posts($queryParamsUsed);
 

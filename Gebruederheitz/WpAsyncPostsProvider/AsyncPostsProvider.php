@@ -11,16 +11,26 @@ use Gebruederheitz\WpAsyncPostsProvider\Helper\ValidatorInterface;
 use Gebruederheitz\SimpleSingleton\SingletonInterface;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
 
-class AsyncPostsProvider extends Container
-    implements ContainerInterface, PsrContainerInterface, SingletonInterface
-
+class AsyncPostsProvider extends Container implements
+    ContainerInterface,
+    PsrContainerInterface,
+    SingletonInterface
 {
     use SingletonAble;
 
+    /** @var ContainerSettings */
     protected $settings;
+
+    /** @var PostFilterInterface */
     protected $postFilter;
+
+    /** @var AsyncPostsInterface */
     protected $asyncPosts;
+
+    /** @var ValidatorInterface */
     protected $validator;
+
+    /** @var PostRendererInterface */
     protected $renderer;
 
     protected function __construct(
@@ -31,10 +41,13 @@ class AsyncPostsProvider extends Container
         parent::__construct(
             $definitionSource,
             $proxyFactory,
-            $wrapperContainer
+            $wrapperContainer,
         );
     }
 
+    /**
+     * @param array<string, mixed> $options
+     */
     public function init(array $options = []): ContainerInterface
     {
         $this->settings = new ContainerSettings($options);
@@ -59,13 +72,14 @@ class AsyncPostsProvider extends Container
         return $this->settings;
     }
 
-    public function getPostFilter():PostFilterInterface
+    public function getPostFilter(): PostFilterInterface
     {
         return $this->postFilter;
     }
 
-    public function setPostFilter(PostFilterInterface $postFilter): ContainerInterface
-    {
+    public function setPostFilter(
+        PostFilterInterface $postFilter
+    ): ContainerInterface {
         $this->postFilter = $postFilter;
 
         return $this;
@@ -76,8 +90,9 @@ class AsyncPostsProvider extends Container
         return $this->asyncPosts;
     }
 
-    public function setAsyncPosts(AsyncPostsInterface $asyncPosts): ContainerInterface
-    {
+    public function setAsyncPosts(
+        AsyncPostsInterface $asyncPosts
+    ): ContainerInterface {
         $this->asyncPosts = $asyncPosts;
 
         return $this;
@@ -88,8 +103,9 @@ class AsyncPostsProvider extends Container
         return $this->validator;
     }
 
-    public function setValidator(ValidatorInterface $validator): ContainerInterface
-    {
+    public function setValidator(
+        ValidatorInterface $validator
+    ): ContainerInterface {
         $this->validator = $validator;
 
         return $this;
@@ -100,8 +116,9 @@ class AsyncPostsProvider extends Container
         return $this->renderer;
     }
 
-    public function setRenderer(PostRendererInterface $renderer): ContainerInterface
-    {
+    public function setRenderer(
+        PostRendererInterface $renderer
+    ): ContainerInterface {
         $this->renderer = $renderer;
 
         return $this;
