@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/wp-async-post-provider-util",
-  "version": "2.1.0",
+  "version": "0.1.3",
   "description": "Utilities for the gebruederheitz/wp-async-post-provider PHP composer package",
   "main": "",
   "engines": {
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gebruederheitz/wp-easy-cpt.git"
+    "url": "git+https://github.com/gebruederheitz/ghwapp.git"
   },
   "author": "/gebrüderheitz <kontakt@gebruederheitz.de>",
   "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/gebruederheitz/wp-easy-cpt/issues"
+    "url": "https://github.com/gebruederheitz/ghwapp/issues"
   },
-  "homepage": "https://github.com/gebruederheitz/wp-easy-cpt#readme",
+  "homepage": "https://github.com/gebruederheitz/ghwapp#readme",
   "dependencies": {
     "@prettier/plugin-php": "^0.18.0",
     "prettier": "^2.5.1",
