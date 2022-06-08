@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/wp-async-post-provider-util",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Utilities for the gebruederheitz/wp-async-post-provider PHP composer package",
   "main": "",
   "engines": {
