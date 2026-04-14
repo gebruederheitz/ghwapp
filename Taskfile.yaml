@@ -1,0 +1,63 @@
+version: 3
+tasks:
+  default: task -l
+
+  lint:
+    desc: "Run basic linting with prettier & phpstan"
+    dir: util
+    deps: [lint:prettier, lint:phpstan]
+
+  lint:prettier:
+    desc: "Run prettier to check for formatting issues"
+    dir: util
+    deps: [install]
+    cmd: npm run lint
+
+  lint:phpstan:
+    desc: "Run phpstan to check for PHP code issues"
+    deps: [install]
+    cmd: composer lint
+
+  prettier:
+    desc: "Make prettier process and fix all files in src/"
+    dir: util
+    deps: [install]
+    cmd: npx prettier -w --config .prettierrc ../src
+
+  release:
+    desc: "Create a tagged release to publish a new version of the package"
+    dir: util
+    deps:
+      - lint
+      - install
+    cmd: npm run release
+
+  install-dependencies:
+    desc: "Install dependencies for both PHP and JS"
+    aliases:
+      - install
+    deps:
+      - install:composer
+      - install:npm
+
+  install:composer:
+    desc: "Install PHP dependencies"
+    run: when_changed
+    sources:
+      - composer.json
+      - composer.lock
+    generates:
+      - vendor/**/*
+    cmd: composer install
+
+  install:npm:
+    desc: "Install JS dependencies"
+    dir: util
+    run: when_changed
+    sources:
+      - package.json
+      - package-lock.json
+    generates:
+      - node_modules/**/*
+      - package-lock.json
+    cmd: npm install

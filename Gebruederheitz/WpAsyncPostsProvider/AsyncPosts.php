@@ -46,7 +46,16 @@ class AsyncPosts implements AsyncPostsInterface
     {
         $request->sanitize_params();
 
-        $pageNumber = intval($request->get_param('page'));
+        $rawPageParameter = $request->get_param('page');
+
+        if (is_string($rawPageParameter)) {
+            $pageNumber = intval($rawPageParameter);
+        } elseif (is_int($rawPageParameter)) {
+            $pageNumber = $rawPageParameter;
+        } else {
+            $pageNumber = 0;
+        }
+
         $returnType = $request->get_param('return');
         $templateUsed = $request->get_param('partial') ?: '';
 
@@ -77,7 +86,7 @@ class AsyncPosts implements AsyncPostsInterface
                     : $this->container
                         ->getRenderer()
                         ->render($posts, $templateUsed),
-            'more' => $more,
+            'more' => $more ?: false,
         ];
     }
 

@@ -16,7 +16,7 @@ interface PostFilterInterface
         int $pageNumber,
         array $queryParams = [],
         int $postsPerPage = 6,
-        bool &$more = null,
+        ?bool &$more = null,
         ?int $initialOffset = null
     ): array;
 

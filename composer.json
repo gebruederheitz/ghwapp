@@ -15,14 +15,29 @@
         }
     ],
     "require": {
-	    "php": "^7.3",
-        "php-di/php-di": "^6.3",
-        "gebruederheitz/simple-singleton": "^1.0",
-        "gebruederheitz/wp-simple-rest": "^2.1",
-        "phpstan/phpstan": "^1.7",
-        "szepeviktor/phpstan-wordpress": "^1.1"
+        "php": ">=8.0",
+        "php-di/php-di": "^7.1.1",
+        "gebruederheitz/simple-singleton": "^v1.0.1",
+        "gebruederheitz/wp-simple-rest": "^v3.0.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1.47",
+        "szepeviktor/phpstan-wordpress": "^v2.0.3",
+        "wecodemore/wpstarter": "~3.0.1",
+        "johnpbloch/wordpress-core": "6.9.*@stable"
     },
     "scripts": {
-        "lint": "phpstan analyse -c .phpstan.neon"
+        "lint": "phpstan --memory-limit=2G analyse -c .phpstan.neon"
+    },
+    "config": {
+        "allow-plugins": {
+            "johnpbloch/wordpress-core-installer": true,
+            "composer/installers": true,
+            "wecodemore/wpstarter": true
+        }
+    },
+    "extra": {
+        "wordpress-content-dir": ".wp/wordpress/wp-content",
+        "wordpress-install-dir": ".wp/wordpress"
     }
 }

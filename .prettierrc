@@ -2,6 +2,5 @@
     "singleQuote": true,
     "tabWidth": 4,
     "useTabs": false,
-    "phpVersion": "7.4",
-    "trailingCommaPHP": true
+    "trailingComma": "all",
 }

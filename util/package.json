@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/gebruederheitz/ghwapp#readme",
   "dependencies": {
-    "@prettier/plugin-php": "^0.18.0",
-    "prettier": "^2.5.1",
-    "release-it": "^15.4.2"
+    "@prettier/plugin-php": "^0.25.0",
+    "prettier": "^3.8.2",
+    "release-it": "^19.2.4"
   }
 }

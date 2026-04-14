@@ -77,7 +77,7 @@ class PostFilter implements PostFilterInterface
         int $pageNumber,
         array $queryParams = [],
         int $postsPerPage = 6,
-        bool &$more = null,
+        ?bool &$more = null,
         ?int $initialOffset = null
     ): array {
         $more = false;
@@ -107,6 +107,7 @@ class PostFilter implements PostFilterInterface
             $queryParams,
         );
 
+        /** @var WP_Post[] $posts  Query doesn't return IDs only. */
         $posts = get_posts($queryParamsUsed);
 
         if (count($posts) > $postsToReturn) {

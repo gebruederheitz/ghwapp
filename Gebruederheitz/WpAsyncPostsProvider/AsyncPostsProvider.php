@@ -34,12 +34,12 @@ class AsyncPostsProvider extends Container implements
     protected $renderer;
 
     protected function __construct(
-        MutableDefinitionSource $definitionSource = null,
-        ProxyFactory $proxyFactory = null,
-        PsrContainerInterface $wrapperContainer = null
+        ?MutableDefinitionSource $definitionSource = null,
+        ?ProxyFactory $proxyFactory = null,
+        ?PsrContainerInterface $wrapperContainer = null
     ) {
         parent::__construct(
-            $definitionSource,
+            $definitionSource ?? [],
             $proxyFactory,
             $wrapperContainer,
         );
