@@ -48,13 +48,12 @@ class AsyncPosts implements AsyncPostsInterface
 
         $rawPageParameter = $request->get_param('page');
 
-        if (is_string($rawPageParameter)) {
-            $pageNumber = intval($rawPageParameter);
-        } elseif (is_int($rawPageParameter)) {
-            $pageNumber = $rawPageParameter;
-        } else {
-            $pageNumber = 0;
-        }
+        // The 'page' parameter may arrive as an int, a numeric string, or –
+        // after sanitize_params() coerces the 'integer'/'number' schema type –
+        // as a float. Accept any numeric value; everything else is page 0.
+        $pageNumber = is_numeric($rawPageParameter)
+            ? intval($rawPageParameter)
+            : 0;
 
         $returnType = $request->get_param('return');
         $templateUsed = $request->get_param('partial') ?: '';
@@ -122,7 +121,8 @@ class AsyncPosts implements AsyncPostsInterface
                         'page' => [
                             'description' => 'Which page to show',
                             'default' => 0,
-                            'type' => 'number',
+                            'type' => 'integer',
+                            'sanitize_callback' => 'absint',
                         ],
                         'return' => [
                             'description' =>
